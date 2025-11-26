@@ -48,9 +48,8 @@ view('some.view', [...]);
 
 Twig is **only** used when the view name ends with `.twig`.
 
-- `view('home')` → **Odo** (existing Doppar templating engine).
-- `view('home.html.twig')` → **Twig** (through `TwigBridge\TwigController`).
-```
+- `view('home')` → **Odo**
+- `view('home.html.twig')` → **Twig**
 
 ## Using Twig in a Doppar app
 
@@ -80,7 +79,3 @@ class WelcomeController
     }
 }
 ```
-
-Because the view name ends with `.twig`, the Twig bridge will render it using Twig. If you drop the `.twig` suffix, Doppar will use the original Odo engine.
-
----
