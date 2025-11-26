@@ -13,8 +13,16 @@ use Phaseolies\Providers\PackageServiceProvider;
 
 class TwigServiceProvider extends PackageServiceProvider
 {
+    /**
+     * The package name.
+     *
+     * @var string
+     */
     protected string $packageName = 'twig-bridge';
 
+    /**
+     * Configure the package.
+     */
     protected function configurePackage()
     {
         $this->app->singleton(TwigEnvironment::class, function ($app) {
