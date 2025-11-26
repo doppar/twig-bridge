@@ -1,0 +1,17 @@
+{
+  "name": "doppar/twig-bridge",
+  "description": "Twig integration bridge for Doppar Framework",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Doppar\\TwigBridge\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=8.1",
+    "twig/twig": "^3.0",
+    "twig/intl-extra": "^3.0",
+    "twig/extra-bundle": "^3.0",
+    "twig/html-extra": "^3.0"
+  }
+}
