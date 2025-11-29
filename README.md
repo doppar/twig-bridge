@@ -1,81 +1,32 @@
-# Doppar Twig Bridge
+<p align="center">
+    <a href="https://doppar.com" target="_blank">
+        <img src="https://raw.githubusercontent.com/doppar/doppar/7138fb0e72cd55256769be6947df3ac48c300700/public/logo.png" width="400">
+    </a>
+</p>
 
-This package provides a thin integration layer between **Twig** and the **Doppar Framework**.
+<p align="center">
+<a href="https://github.com/doppar/twig-bridge/actions/workflows/tests.yml"><img src="https://github.com/doppar/twig-bridge/actions/workflows/tests.yml/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/doppar/twig-bridge"><img src="https://img.shields.io/packagist/dt/doppar/twig-bridge" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/doppar/twig-bridge"><img src="https://img.shields.io/packagist/v/doppar/twig-bridge" alt="Latest Stable Version"></a>
+<a href="https://github.com/doppar/twig-bridge/blob/main/LICENSE"><img src="https://img.shields.io/github/license/doppar/twig-bridge" alt="License"></a>
+</p>
 
-Its goals are:
+## About Doppar Twig Bridge
 
-- **Keep the existing Doppar view system (Odo) working unchanged.**
-- **Enable Twig only when you explicitly ask for it.**
-- **Require virtually no configuration in your application.**
+The Doppar Twig Bridge is an integration layer that allows applications built on the Doppar Framework to render views using Twig, a powerful and flexible templating engine. The bridge is intentionally minimalistic and non-intrusive so you can adopt Twig progressively without disrupting your existing Odo-based templates.
 
----
+## Contributing
 
-## Installation
+Thank you for considering contributing to the Doppar framework! The contribution guide can be found in the [Doppar documentation](https://doppar.com/versions/3.x/contributions.html).
 
-```bash
-composer require doppar/twig-bridge:dev-main
-composer dump-autoload
-```
+## Code of Conduct
 
----
+In order to ensure that the Doppar community is welcoming to all, please review and abide by the [Code of Conduct](https://doppar.com/versions/3.x/contributions.html#code-of-conduct).
 
-## Register the service provider
+## Security Vulnerabilities
 
-In your application `config/app.php`, add the Twig bridge service provider to the `providers` array:
+Please review [our security policy](https://github.com/doppar/framework/security/policy) on how to report security vulnerabilities.
 
-```php
-"providers" => [
-    App\Providers\AppServiceProvider::class,
-    Doppar\TwigBridge\TwigServiceProvider::class,
-],
-```
+## License
 
-There is no additional configuration file required. Once the provider is registered, Twig is ready to use.
-
----
-
-## How it works
-
-### 1. Controller binding
-
-The Doppar global `view()` helper resolves the main controller class from the container:
-
-```php
-view('some.view', [...]);
-```
-
-### 2. When Twig is used
-
-Twig is **only** used when the view name ends with `.twig`.
-
-- `view('home')` → **Odo**
-- `view('home.html.twig')` → **Twig**
-
-## Using Twig in a Doppar app
-
-### 1. Create a Twig view
-
-Example file: `resources/views/hello.html.twig`
-
-```twig
-<h1>Hello {{ name }}</h1>
-{{ dump(name) }}
-```
-
-### 2. Return a Twig view from a controller
-
-In one of your HTTP controllers:
-
-```php
-use Phaseolies\Http\Response;
-use Phaseolies\Attributes\Route;
-
-class WelcomeController
-{
-    #[Route(uri: '/', name: 'home')]
-    public function welcome(): Response
-    {
-        return view('hello.html.twig', ['name' => 'MyName']);
-    }
-}
-```
+The Doppar framework is open-sourced software licensed under the [MIT license](LICENSE.md).
