@@ -45,7 +45,6 @@
     },
     "minimum-stability": "dev",
     "require-dev": {
-        "phpstan/phpstan": "2.1.x-dev",
         "phpunit/phpunit": "^13.0@dev"
     }
 }
