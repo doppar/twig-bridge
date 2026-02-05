@@ -17,12 +17,18 @@
             "Doppar\\TwigBridge\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Doppar\\TwigBridge\\Tests\\": "tests/"
+        }
+    },
     "require": {
         "php": ">=8.1",
-        "twig/twig": "^3.0",
-        "twig/intl-extra": "^3.0",
+        "doppar/framework": "^3.0@dev",
         "twig/extra-bundle": "^3.0",
-        "twig/html-extra": "^3.0"
+        "twig/html-extra": "^3.0",
+        "twig/intl-extra": "^3.0",
+        "twig/twig": "^3.0"
     },
     "extra": {
         "branch-alias": {
@@ -37,5 +43,9 @@
     "config": {
         "sort-packages": true
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpstan/phpstan": "2.1.x-dev",
+        "phpunit/phpunit": "^13.0@dev"
+    }
 }
