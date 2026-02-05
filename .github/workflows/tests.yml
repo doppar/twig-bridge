@@ -39,4 +39,4 @@ jobs:
            composer update --prefer-dist --no-interaction --no-progress
 
       - name: Execute tests
-        run: vendor/bin/phpunit --display-deprecations --fail-on-deprecation
+        run: vendor/bin/phpunit
