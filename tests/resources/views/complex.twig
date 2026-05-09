@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <p>{{ content }}</p>
+    
+    {% if items is defined and items|length > 0 %}
+        <ul>
+            {% for item in items %}
+                <li>{{ item.name }} - €{{ item.price|number_format(2, ',', '.') }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No items found.</p>
+    {% endif %}
+    
+    {% if debug is defined and debug %}
+        {{ dump(data) }}
+    {% endif %}
+</body>
+</html>
