@@ -9,9 +9,10 @@ use Twig\Extra\Html\HtmlExtension;
 use Twig\Extra\Intl\IntlExtension;
 use Twig\Environment as TwigEnvironment;
 use Phaseolies\Http\Controllers\Controller;
+use Phaseolies\Providers\GhostableProvider;
 use Phaseolies\Providers\PackageServiceProvider;
 
-class TwigServiceProvider extends PackageServiceProvider
+class TwigServiceProvider extends PackageServiceProvider implements GhostableProvider
 {
     /**
      * The package name.
@@ -63,5 +64,18 @@ class TwigServiceProvider extends PackageServiceProvider
 
     public function boot()
     {
+    }
+
+    /**
+     * Get the services that should ghost-load this provider.
+     *
+     * @return array<int, string>
+     */
+    public function ghosts(): array
+    {
+        return [
+            TwigEnvironment::class,
+            Controller::class,
+        ];
     }
 }
