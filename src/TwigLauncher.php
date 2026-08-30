@@ -9,10 +9,10 @@ use Twig\Extra\Html\HtmlExtension;
 use Twig\Extra\Intl\IntlExtension;
 use Twig\Environment as TwigEnvironment;
 use Phaseolies\Http\Controllers\Controller;
-use Phaseolies\Providers\GhostableProvider;
-use Phaseolies\Providers\PackageServiceProvider;
+use Phaseolies\Launchers\GhostableLauncher;
+use Phaseolies\Launchers\PackageServiceLauncher;
 
-class TwigServiceProvider extends PackageServiceProvider implements GhostableProvider
+class TwigLauncher extends PackageServiceLauncher implements GhostableLauncher
 {
     /**
      * The package name.
@@ -29,7 +29,7 @@ class TwigServiceProvider extends PackageServiceProvider implements GhostablePro
         $this->app->singleton(TwigEnvironment::class, function ($app) {
             $loader = new FilesystemLoader();
 
-            $loader->addPath(base_path('resources/views'));
+            $loader->addPath(base_path('templates/views'));
 
             $twig = new TwigEnvironment($loader, [
                 'cache' => base_path('storage/framework/twig'),
@@ -62,7 +62,7 @@ class TwigServiceProvider extends PackageServiceProvider implements GhostablePro
         });
     }
 
-    public function boot()
+    public function launch()
     {
     }
 
