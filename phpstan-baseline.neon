@@ -1,0 +1,31 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Call to function is_string\(\) with string will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/TwigController.php
+
+		-
+			message: '#^Method Doppar\\TwigBridge\\TwigController\:\:render\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/TwigController.php
+
+		-
+			message: '#^Method Doppar\\TwigBridge\\TwigController\:\:render\(\) should return string but returns int\|string\.$#'
+			identifier: return.type
+			count: 1
+			path: src/TwigController.php
+
+		-
+			message: '#^Method Doppar\\TwigBridge\\TwigController\:\:renderWithTwig\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/TwigController.php
+
+		-
+			message: '#^Method Doppar\\TwigBridge\\TwigLauncher\:\:configurePackage\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/TwigLauncher.php

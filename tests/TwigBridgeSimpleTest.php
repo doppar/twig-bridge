@@ -3,7 +3,7 @@
 namespace Doppar\TwigBridge\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Doppar\TwigBridge\TwigServiceProvider;
+use Doppar\TwigBridge\TwigLauncher;
 use Twig\Environment as TwigEnvironment;
 use Twig\Loader\FilesystemLoader;
 use Twig\Extension\DebugExtension;
@@ -119,23 +119,22 @@ class TwigBridgeSimpleTest extends TestCase
         $this->assertArrayHasKey(HtmlExtension::class, $extensions);
     }
 
-    public function testServiceProviderPackageName()
+    public function testLauncherPackageName()
     {
         $mockApp = $this->createMock(\Phaseolies\Application::class);
-        $provider = new TwigServiceProvider($mockApp);
-        
+        $provider = new TwigLauncher($mockApp);
+
         $reflection = new \ReflectionClass($provider);
         $property = $reflection->getProperty('packageName');
-        $property->setAccessible(true);
-        
+
         $this->assertEquals('twig-bridge', $property->getValue($provider));
     }
 
-    public function testServiceProviderBoot()
+    public function testLauncherLaunch()
     {
         $mockApp = $this->createMock(\Phaseolies\Application::class);
-        $provider = new TwigServiceProvider($mockApp);
-        
-        $this->assertNull($provider->boot());
+        $provider = new TwigLauncher($mockApp);
+
+        $this->assertNull($provider->launch());
     }
 }
